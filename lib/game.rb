@@ -79,7 +79,6 @@ class Game
     end
 
     def play
-        puts "Welcome to 1 or 2-Player Tic Tac Toe!"
         board.display
         puts "You go first #{current_player}"
         until over?
@@ -92,5 +91,7 @@ class Game
         end
     end
 
+
+  
 
 end
