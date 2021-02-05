@@ -1,3 +1,33 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+
+puts "Welcome to 1 or 2-Player Tic Tac Toe!"
+    puts "Do you want to play 1 player, 2 player or Wargames(CPU vs CPU) mode?"
+    input = gets.chomp
+    case input
+    when /1\.*/
+        game = Game.new(Players::Human.new("X"), Players::Computer.new("O"), Board.new)
+        game.play
+    when /2\.*/
+        game = Game.new
+        game.play
+    when /war\.*/
+        x_wins = 0
+        o_wins = 0
+        ties = 0
+        100.times do 
+        game = Game.new(Players::Computer.new("X"), Players::Computer.new("O"), Board.new)
+        game.play
+        
+            if game.winner == "X"
+                x_wins += 1
+            elsif game.winner == "O"
+                o_wins += 1
+            else 
+                ties += 1
+            end
+        end
+        puts "After 100 battles the results are in: X - #{x_wins}, O - #{o_wins}, ties- #{ties}"
+    end
